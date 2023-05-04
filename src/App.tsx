@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import './App.css'
 import { db } from './firebase-config'
 import { collection, getDocs } from 'firebase/firestore'
+import { GridProduct } from './components/products/GridProduct'
 
 
 const mockProduct = [
@@ -95,15 +96,7 @@ function App() {
     <div className="flex flex-col md:flex-row justify-center bg-gray-100">
       <div className='w-0 md:w-1/4 bg-green-400'></div>
       <div className='bg-yellow-400 w-full flex justify-center px-2 py-4'>
-        <div className=" grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-14 p-4">
-          {mockProduct.map(product => (
-            <div className=" rounded-lg shadow-lg flex flex-col justify-center items-center bg-white py-2 px-2 max-w-sm" key={product.id}>
-              <img src={product.colors[0].img} alt={product.name} className='w-full rounded-lg' />
-              <div className='w-full flex justify-between mt-2'><h4>{product.name}</h4> <span className='font-bold'>${product.price}</span></div>
-              <span className='w-full flex flex-start text-[12px]'>{product.colors.length} Colorways</span>
-            </div>
-          ))}
-        </div>
+        <GridProduct products={mockProduct} />
       </div>
     </div>
   )
