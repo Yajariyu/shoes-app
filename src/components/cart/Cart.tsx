@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 const mockCart = [{
   "colorSelected":
@@ -18,7 +18,7 @@ const mockCart = [{
   "colorSelected":
   {
     "img": "https://res.cloudinary.com/dz6a6utrx/image/upload/v1683240401/tech-hera-womens-shoes-NjvkxR-pink_ofxn2i.jpg",
-    "color": "pink"
+    "color": "green"
   },
   "price": 110,
   "name": "Nike Tech Hera",
@@ -37,7 +37,7 @@ export const Cart = () => {
       <span>Below is a list of your items</span>
       {
         mockCart.map(product => (
-          <div className='w-full flex flex-row items-center justify-between my-4'>
+          <div className='w-full flex flex-row items-center justify-between my-4' key={`${product.id} + ${product.colorSelected.color}`}>
             <div className="flex">
               <img src={product.colorSelected?.img} alt={product.name} className='rounded-md w-[70px]' />
               <div className='flex flex-col ml-1'>

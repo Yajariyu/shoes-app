@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import { Color, Product } from '../../types/product'
 import { AiOutlineUser, AiFillStar } from 'react-icons/ai'
 import { ratingData } from '../../mockData/ratingData';
+import AddCart from '../cart/AddCar';
 
 interface ProductDetail {
   product: Product
@@ -64,10 +65,10 @@ const ProductDetail: FC<ProductDetail> = ({ product }) => {
               </div>
               <p>{rating.description}</p>
             </div>
-
           ))
         }
       </div >
+      <AddCart />
     </div>
   )
 }
