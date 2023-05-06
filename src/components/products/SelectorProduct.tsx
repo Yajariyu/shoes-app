@@ -1,15 +1,8 @@
 import { FC } from 'react'
 import { Color } from '../../types/product'
+import { Selector, SelectorProductProps } from '../../types/selector'
 
 
-interface SelectorProductProps<T> {
-  collection: T[],
-  handleFunction: (item: T) => void,
-  selected: T,
-  prop?: T extends Color ? keyof T : never;
-}
-
-type Selector = Color | string
 export const SelectorProduct: FC<SelectorProductProps<Selector>> = ({ collection, handleFunction, prop, selected }) => {
   return (
     <div className="w-full flex flex-row my-4">
