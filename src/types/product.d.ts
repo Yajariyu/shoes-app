@@ -13,4 +13,5 @@ export interface Product {
 export interface Color {
   img:   string;
   color: string;
+  id:     string;
 }
