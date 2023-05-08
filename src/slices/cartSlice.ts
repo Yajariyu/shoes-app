@@ -8,7 +8,8 @@ interface CartState {
   cartProducts: CartProduct[]
   base: number;
   taxes: number
-  total: number
+  total: number;
+  open: boolean
 }
 
 // Define the initial state using that type
@@ -16,7 +17,8 @@ const initialState: CartState = {
   cartProducts: [],
   base: 0,
   taxes: 0,
-  total: 0
+  total: 0,
+  open: false
 }
 
 export const cartSlice = createSlice({
@@ -46,10 +48,14 @@ export const cartSlice = createSlice({
       state.taxes = state.base*0.15
       state.total = state.base+state.taxes
     },
+    setoggleCart:(state, action:PayloadAction<boolean>) => {
+      state.open =action.payload
+    }
   },
+
 })
 
-export const { addCart } = cartSlice.actions
+export const { addCart, setoggleCart } = cartSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectProducts = (state: RootState) => state.products.products

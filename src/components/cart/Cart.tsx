@@ -1,13 +1,15 @@
+import { useDispatch } from "react-redux"
 import { useAppSelector } from "../../hooks/store"
+import { setoggleCart } from "../../slices/cartSlice"
 import PriceSummary from "./PriceSummary"
 
-export const Cart = ({ setOpen }: { setOpen: (flag: boolean) => void }) => {
+export const Cart = () => {
   const { cartProducts } = useAppSelector(state => state.cart)
-
+  const dispatch = useDispatch();
   return (
     <div className='bg-white rounded-md px-4 py-2 z-10 absolute left-0 min-w-[80%] min-h-[100%] md:min-h-[500px] md:relative flex flex-col'>
       <h2 className='font-bold'>Order Summary</h2>
-      <span className='font-bold absolute right-2 top-1 md:hidden cursor-pointer' onClick={() => setOpen(false)}>X</span>
+      <span className='font-bold absolute right-2 top-1 md:hidden cursor-pointer' onClick={() => dispatch(setoggleCart(false))}>X</span>
       <span>Below is a list of your items</span>
       {
         cartProducts.map(product => (
