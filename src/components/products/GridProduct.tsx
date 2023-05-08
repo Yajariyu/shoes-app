@@ -18,10 +18,11 @@ export const GridProduct: FC = () => {
     const getProducts = async () => {
       setLoading(true)
       try {
-        const products = await getProductsDB();
-        dispatch(addProducts(products))
+        const results = await getProductsDB();
+        if (results.length > 0) {
+          dispatch(addProducts(results));
+        }
       } catch (e) {
-        setLoading(false)
         setError(true)
       } finally {
         setLoading(false)
@@ -30,14 +31,14 @@ export const GridProduct: FC = () => {
     getProducts();
   }, [dispatch])
 
-  if (products.length === 0 && error && !loading) return (
+  if ((products.length === 0 && !loading) || error) return (
     <>
-      <h1>No data</h1>
+      <h1 className='text-[26px] font-bold'>No data</h1>
     </>
   )
   return (
     <>
-      <div className=" grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-14">
+      <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-4 w-full ">
         {products.map(product => (
           <ProductCard product={product} key={product.id} />
         ))}

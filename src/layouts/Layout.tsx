@@ -19,7 +19,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
         {open && <Cart setOpen={setOpen} />}
       </div>
       <div className='px-16 text-purple-800 text-[30px] py-4 md:hidden bg-purple-300' onClick={() => setOpen(true)}><AiFillShop /></div>
-      <div className='w-full flex justify-center px-2 py-4'>
+      <div className='w-full flex justify-center px-12 md:px-2 py-4'>
         {children}
       </div>
     </div >

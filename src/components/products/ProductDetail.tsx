@@ -42,11 +42,11 @@ const ProductDetail: FC<ProductDetail> = ({ product }) => {
 
   return (
     <div className='bg-white rounded-sm flex flex-col px-8 py-12'>
-      <div className='w-full flex flex-col lg:flex-row'>
+      <div className='w-full flex flex-col lg:flex-row min-h-[300px]'>
         <div className='w-full'>
-          <img src={colorSelected.img} alt={product.name} className='w-full h-full rounded-lg' />
+          <img src={colorSelected.img} alt={product.name} className='w-full  rounded-lg' />
         </div>
-        <div className='py-2 px-4 w-full lg:min-w-[65%] xl:min-w-[70%] self-center'>
+        <div className='py-2 px-4 min-w-[60%] self-center'>
           <h2 className='font-bold text-[22px]'>{product.name}</h2>
           <span className='text-purple-600 font-semibold'>${product.price.toFixed(2)}</span>
           <p className='text-justify my-2 text-[14px]'>{product.fullDescription}</p>
