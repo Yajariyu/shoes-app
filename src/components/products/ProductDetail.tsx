@@ -41,10 +41,10 @@ const ProductDetail: FC<ProductDetail> = ({ product }) => {
   }
 
   return (
-    <div className='bg-white rounded-sm flex flex-col px-8 py-12'>
+    <div className='bg-white w-full rounded-sm flex flex-col px-8 py-12'>
       <div className='w-full flex flex-col lg:flex-row min-h-[300px]'>
         <div className='w-full'>
-          <img src={colorSelected.img} alt={product.name} className='w-full  rounded-lg' />
+          <div className='w-full rounded-lg pb-[70%] bg-cover' style={{ backgroundImage: `url(${colorSelected.img})` }}></div>
         </div>
         <div className='py-2 px-4 min-w-[60%] self-center'>
           <h2 className='font-bold text-[22px]'>{product.name}</h2>
@@ -69,7 +69,7 @@ const ProductDetail: FC<ProductDetail> = ({ product }) => {
       </div>
       <Rating />
       <AddCart handleAddCart={handleAddCart} />
-    </div>
+    </div >
   )
 }
 

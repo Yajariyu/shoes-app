@@ -5,6 +5,7 @@ import { ProductCard } from './ProductCard'
 import { useAppDispatch, useAppSelector } from '../../hooks/store';
 import { addProducts } from '../../slices/productSlice';
 import { getProductsDB } from '../../db/db';
+import SkeletonCard from '../ui/SkeletonCard';
 
 
 
@@ -36,10 +37,12 @@ export const GridProduct: FC = () => {
       <h1 className='text-[26px] font-bold'>No data</h1>
     </>
   )
+
   return (
     <>
       <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-4 w-full ">
-        {products.map(product => (
+        {loading && <SkeletonCard count={12} />}
+        {!loading && products?.map(product => (
           <ProductCard product={product} key={product.id} />
         ))}
       </div>
