@@ -29,8 +29,8 @@ export const GridProduct: FC = () => {
         setLoading(false)
       }
     }
-    getProducts();
-  }, [dispatch])
+    if (products.length === 0) getProducts();
+  }, [dispatch, products])
 
   if ((products.length === 0 && !loading) || error) return (
     <>
