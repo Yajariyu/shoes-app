@@ -14,7 +14,7 @@ export const getProductsDB = async () :Promise<Product[]> => {
 export const getProductDB = async (id:string) : Promise<Product> => {
   const docProduct =  doc(db,'products', id);
   const result = await getDoc(docProduct);
-  const product = result.data() as Product
+  const product = {...result.data(), id }  as Product
   return product
 }
 

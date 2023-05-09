@@ -34,17 +34,29 @@ export const cartSlice = createSlice({
 
       if(state.cartProducts.length === 0) state.cartProducts = [newProductCart]
       else {
-        state.cartProducts = state.cartProducts.map(product => 
-          {
-            if(product.id === action.payload.id) {
-            return {
-              ...product, selection: [...product.selection, action.payload.selection],
-               quantity: product.quantity+1}
-         } else return product
-        })
+        if(state.cartProducts.findIndex(product=>product.id === action.payload.id) > -1) {
+          const newProducts = state.cartProducts?.map(product => 
+            {
+              if(product.id === action.payload.id) {
+              return ({
+                ...product, selection: [...product.selection, action.payload.selection],
+                 quantity: product.quantity+1})
+           } else { return product}
+          })
+          state.cartProducts = newProducts
+        } else {
+          state.cartProducts.push(newProductCart)
+        }
+
       }
 
       state.base = state.base + action.payload.price*action.payload.quantity
+      state.taxes = state.base*0.15
+      state.total = state.base+state.taxes
+    },
+    removeCart:(state, action:PayloadAction<string> ) => {
+      state.cartProducts = state.cartProducts.filter(product=>product.id!==action.payload)
+      state.base = state.cartProducts.reduce((acum, product)=> (acum+(product.price*product.quantity)),0)
       state.taxes = state.base*0.15
       state.total = state.base+state.taxes
     },
@@ -55,7 +67,7 @@ export const cartSlice = createSlice({
 
 })
 
-export const { addCart, setoggleCart } = cartSlice.actions
+export const { addCart, setoggleCart , removeCart} = cartSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectProducts = (state: RootState) => state.products.products
