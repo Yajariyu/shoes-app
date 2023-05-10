@@ -117,7 +117,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ close }) => {
           </div>
         </div>
         <div className="flex justify-end">
-          <button className="bg-purple-300 rounded-full px-5 font-bold py-1 mt-2" onClick={handleSubmit(handlePay)}>Pay</button>
+          <button className="primary-button px-5 py-1 mt-2" onClick={handleSubmit(handlePay)}>Pay</button>
         </div>
       </form>
 

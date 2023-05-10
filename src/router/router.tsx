@@ -10,6 +10,7 @@ import ProductDetailPage from "../views/ProductDetailPage";
 import { getProductDB } from "../db/db";
 import { useState, useEffect } from 'react';
 import { Product } from "../types/product";
+import { CustomFallback } from "../components/ui/CustomFallback";
 
 
 const ProductDetailById = () => {
@@ -49,10 +50,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <CustomFallback />
   },
   {
     path: '/:id',
-    element: <ProductDetailById />
+    element: <ProductDetailById />,
+    errorElement: <CustomFallback />
   }
 ]);
 

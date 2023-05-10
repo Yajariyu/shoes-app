@@ -23,7 +23,7 @@ const PriceSummary: FC = () => {
         </div>
         <div className='w-full flex justify-between mt-4'>
           <button className="bg-red-100 rounded-full px-4 py-2 font-bold" onClick={() => dispatch(deleteCart())}>Cancel</button>
-          <button className="bg-purple-200 rounded-full px-2 py-2 font-bold" onClick={() => setPaymentForm(true)}>Continue</button>
+          <button className="primary-button px-2 py-2" onClick={() => setPaymentForm(true)}>Continue</button>
         </div>
       </div>
       {paymentForm && <Modal closeModal={() => setPaymentForm(false)}>

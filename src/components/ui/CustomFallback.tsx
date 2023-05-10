@@ -1,15 +1,9 @@
-"use client";
-import { FallbackProps } from "react-error-boundary";
-
-const CustomFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
+export const CustomFallback = () => {
   return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre style={{ color: "red" }}>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-
+    <div className="w-screen h-screen text-center pt-8 text-[30px] text-purple-600 font-bold flex flex-col justify-center items-center">
+      <p>Something went wrong 🥲</p>
+      <p>Please Try Again!!!</p>
     </div>
   )
 }
 
-export default CustomFallback
