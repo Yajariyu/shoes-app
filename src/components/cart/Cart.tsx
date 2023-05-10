@@ -19,7 +19,7 @@ export const Cart = () => {
 
   return (
     <div
-      className='bg-white rounded-md px-4 py-2 z-10 fixed overflow-y-scroll top-0 left-0 min-w-[80%]
+      className='bg-white rounded-md px-4 py-2 z-10 fixed overflow-y-auto top-0 left-0 min-w-[80%]
       min-h-[100%] max-h-[100%] md:min-h-[500px] md:relative flex flex-col'
     >
       <h2 className='font-bold'>Order Summary</h2>

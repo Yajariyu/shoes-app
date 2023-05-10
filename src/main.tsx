@@ -6,12 +6,13 @@ import { persistor, store } from './store/store.ts'
 import { MyRouter } from './router/router.tsx'
 import { ErrorBoundary } from "react-error-boundary";
 import { PersistGate } from 'redux-persist/integration/react'
+import CustomFallback from './components/ui/CustomFallback.tsx'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+        <ErrorBoundary FallbackComponent={CustomFallback}>
           <MyRouter />
         </ErrorBoundary>
       </PersistGate>

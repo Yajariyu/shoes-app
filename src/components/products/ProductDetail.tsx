@@ -6,6 +6,8 @@ import { addCart } from '../../slices/cartSlice';
 import AddCart from '../cart/AddCar';
 import { Rating } from './Rating';
 import { SelectionComponent } from './SelectionComponent';
+import { AiOutlineDoubleLeft } from 'react-icons/ai'
+import { Link } from 'react-router-dom';
 
 interface ProductDetail {
   product: Product
@@ -42,6 +44,7 @@ const ProductDetail: FC<ProductDetail> = ({ product }) => {
 
   return (
     <div className='bg-white w-full rounded-sm flex flex-col px-8 py-12'>
+      <Link className="text-[24px] font-bold" to="/"><AiOutlineDoubleLeft /></Link>
       <div className='w-full flex flex-col lg:flex-row min-h-[300px]'>
         <div className='w-full'>
           <div className='w-full rounded-lg pb-[70%] bg-cover' style={{ backgroundImage: `url(${colorSelected.img})` }}></div>
