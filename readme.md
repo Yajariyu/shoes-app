@@ -30,6 +30,7 @@ Start the development server: npm run dev
 <li>Redux Persist</li>
 <li>Tailwind CSS</li>
 <li>React Router DOM</li>
+<li>Backend Data : FireBase</li>
 </ul>
 
 # Folder Structure
