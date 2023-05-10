@@ -44,12 +44,12 @@ const ProductDetail: FC<ProductDetail> = ({ product }) => {
 
   return (
     <div className='bg-white w-full rounded-sm flex flex-col px-8 py-12'>
-      <Link className="text-[24px] font-bold" to="/"><AiOutlineDoubleLeft /></Link>
+      <Link className="text-[24px] font-bold mb-4" to="/"><AiOutlineDoubleLeft /></Link>
       <div className='w-full flex flex-col lg:flex-row min-h-[300px]'>
         <div className='w-full'>
           <div className='w-full rounded-lg pb-[70%] bg-cover' style={{ backgroundImage: `url(${colorSelected.img})` }}></div>
         </div>
-        <div className='py-2 px-4 min-w-[60%] self-center'>
+        <div className='py-2 px-4 w-full md:min-w-[60%] self-center'>
           <h2 className='font-bold text-[22px]'>{product.name}</h2>
           <span className='text-purple-600 font-semibold'>${product.price.toFixed(2)}</span>
           <p className='text-justify my-2 text-[14px]'>{product.fullDescription}</p>

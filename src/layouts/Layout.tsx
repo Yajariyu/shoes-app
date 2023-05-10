@@ -26,7 +26,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
       <div className='w-0 md:w-[35%] px-2 md:py-4'>
         {open && <Cart />}
       </div>
-      <div className='px-16 text-purple-800 text-[30px] py-4 md:hidden bg-purple-300' onClick={() => handleToogleCart(!open)}><AiFillShop /></div>
+      <div className='px-16 text-purple-800 text-[30px] py-4 md:hidden bg-purple-300 w-full flex justify-end' onClick={() => handleToogleCart(!open)}><AiFillShop /></div>
       <div className='w-full flex justify-center px-6 md:px-2 py-4'>
         {children}
       </div>

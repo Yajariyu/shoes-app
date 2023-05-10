@@ -40,7 +40,7 @@ const schema = yup.object({
       }
       return false
     }).required(),
-  name: yup.string().required().min(3),
+  name: yup.string().required().min(3).matches(/^[a-zA-Z]{3,}$/),
   number: yup.string().min(19).test('validateExpiry', 'Invalid card Number',
     (value) => {
       value?.replace(/\D/g, '');
@@ -59,7 +59,7 @@ export const CheckoutForm: FC<CheckoutFormProps> = ({ close }) => {
 
   const handlePay = () => {
     toast("Payment in Process", {
-      onClose: () => setTimeout(() => { close(); dispatch(deleteCart()) }, 3000),
+      onClose: () => setTimeout(() => { close(); dispatch(deleteCart()) }, 1000),
     });
 
   }

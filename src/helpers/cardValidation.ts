@@ -1,3 +1,5 @@
+/**Use Validation Field and ValidatinForm for manual Validation */
+
 export const validationField = {
   onLyNumber: (value:string) => {
     return value.replace(/\D/g, '');
