@@ -8,7 +8,6 @@ import { getProductsDB } from '../../db/db';
 import SkeletonCard from '../ui/SkeletonCard';
 
 
-
 export const GridProduct: FC = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)

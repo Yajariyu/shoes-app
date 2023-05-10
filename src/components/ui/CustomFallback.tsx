@@ -1,8 +1,14 @@
-import React from 'react'
+"use client";
+import { FallbackProps } from "react-error-boundary";
 
-const CustomFallback = () => {
+const CustomFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
   return (
-    <div>CustomFallback</div>
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre style={{ color: "red" }}>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
+
+    </div>
   )
 }
 
