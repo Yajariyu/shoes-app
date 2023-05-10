@@ -53,15 +53,16 @@ export const CheckoutForm = () => {
 
   }
   return (
-    <div id="PaymentForm">
-      <div className="flex justify-end font-bold text-red-600 text-[32px]">x</div>
-      <Cards
-        cvc={creditForm.cvc}
-        expiry={creditForm.expiry}
-        name={creditForm.name}
-        number={creditForm.number}
-      />
-      <form className=" mt-4">
+    <div id="PaymentForm" className=" flex flex-col md:flex-row md:items-center justify-start w-full">
+      <div className="mx-2">
+        <Cards
+          cvc={creditForm.cvc}
+          expiry={creditForm.expiry}
+          name={creditForm.name}
+          number={creditForm.number}
+        />
+      </div>
+      <form className="">
         <div className="flex flex-col">
           <MyInput
             name="number"

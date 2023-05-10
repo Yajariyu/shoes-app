@@ -25,7 +25,7 @@ const PriceSummary: FC = () => {
           <button className="bg-purple-200 rounded-full px-2 py-2 font-bold" onClick={() => setPaymentForm(true)}>Continue</button>
         </div>
       </div>
-      {paymentForm && <Modal>
+      {paymentForm && <Modal closeModal={() => setPaymentForm(false)}>
         <CheckoutForm />
       </Modal>}
     </>
