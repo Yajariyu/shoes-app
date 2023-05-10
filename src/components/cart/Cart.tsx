@@ -5,6 +5,7 @@ import { removeCart, setoggleCart } from "../../slices/cartSlice"
 import PriceSummary from "./PriceSummary"
 
 
+
 export const Cart = () => {
 
   const [deleteElement, setDeleteElement] = useState(false);

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store/store'
-import { CartProduct, ProductCart, Selection } from '../types/cart'
+import { CartProduct, ProductCart } from '../types/cart'
 
 // Define a type for the slice state
 interface CartState {
@@ -27,32 +27,23 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addCart: (state, action:PayloadAction<ProductCart> ) => {
-      const newProductCart: CartProduct = {
-        ...action.payload, 
-        selection : [{...action.payload.selection} as Selection]
+      const { id, price, quantity, selection } = action.payload;
+      const existingProductIndex = state.cartProducts.findIndex((product) => product.id === id);
+    
+      if (existingProductIndex > -1) {
+        state.cartProducts[existingProductIndex].quantity += 1;
+        state.cartProducts[existingProductIndex].selection.push({ ...selection });
+      } else {
+        state.cartProducts.push({
+          ...action.payload,
+          selection: [{ ...selection }],
+          quantity: 1
+        });
       }
-
-      if(state.cartProducts.length === 0) state.cartProducts = [newProductCart]
-      else {
-        if(state.cartProducts.findIndex(product=>product.id === action.payload.id) > -1) {
-          const newProducts = state.cartProducts?.map(product => 
-            {
-              if(product.id === action.payload.id) {
-              return ({
-                ...product, selection: [...product.selection, action.payload.selection],
-                 quantity: product.quantity+1})
-           } else { return product}
-          })
-          state.cartProducts = newProducts
-        } else {
-          state.cartProducts.push(newProductCart)
-        }
-
-      }
-
-      state.base = state.base + action.payload.price*action.payload.quantity
-      state.taxes = state.base*0.15
-      state.total = state.base+state.taxes
+    
+      state.base += price * quantity;
+      state.taxes = state.base * 0.15;
+      state.total = state.base + state.taxes;
     },
     removeCart:(state, action:PayloadAction<string> ) => {
       state.cartProducts = state.cartProducts.filter(product=>product.id!==action.payload)
@@ -60,6 +51,9 @@ export const cartSlice = createSlice({
       state.taxes = state.base*0.15
       state.total = state.base+state.taxes
     },
+    deleteCart: (state => {
+      state.cartProducts = []
+    }),
     setoggleCart:(state, action:PayloadAction<boolean>) => {
       state.open =action.payload
     }
