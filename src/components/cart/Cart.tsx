@@ -7,7 +7,6 @@ import PriceSummary from "./PriceSummary"
 
 
 export const Cart = () => {
-
   const [deleteElement, setDeleteElement] = useState(false);
   const { cartProducts } = useAppSelector(state => state.cart)
   const dispatch = useDispatch();
@@ -20,8 +19,8 @@ export const Cart = () => {
 
   return (
     <div
-      className='bg-white rounded-md px-4 py-2 z-10 absolute left-0 min-w-[80%]
-      min-h-[100%] md:min-h-[500px] md:relative flex flex-col'
+      className='bg-white rounded-md px-4 py-2 z-10 fixed overflow-y-scroll top-0 left-0 min-w-[80%]
+      min-h-[100%] max-h-[100%] md:min-h-[500px] md:relative flex flex-col'
     >
       <h2 className='font-bold'>Order Summary</h2>
       <span className='font-bold absolute right-2 top-1 md:hidden cursor-pointer' onClick={() => dispatch(setoggleCart(false))}>X</span>

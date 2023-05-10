@@ -6,12 +6,12 @@ interface MyInputProps {
   type: string;
   placeholder?: string;
   classes?: React.CSSProperties;
-  value: string | number;
+  value?: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error?: string;
 }
-const MyInput: FC<MyInputProps> = ({ name, type, placeholder = '', classes, value, onChange, onBlur, error }) => {
+const MyInput: FC<MyInputProps> = ({ name, type, placeholder = '', classes, value, onChange, onBlur, error, ...props }) => {
   return (
     <div className='w-full'>
       <input
@@ -22,6 +22,7 @@ const MyInput: FC<MyInputProps> = ({ name, type, placeholder = '', classes, valu
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        {...props}
       />
       {error && <span className="text-red-500 text-[12px]">{error}</span>}
     </div>

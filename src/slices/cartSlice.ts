@@ -51,9 +51,12 @@ export const cartSlice = createSlice({
       state.taxes = state.base*0.15
       state.total = state.base+state.taxes
     },
-    deleteCart: (state => {
-      state.cartProducts = []
-    }),
+    deleteCart: (state) => { 
+      state.cartProducts= []
+      state.base= 0
+      state.taxes= 0
+      state.total= 0
+    },
     setoggleCart:(state, action:PayloadAction<boolean>) => {
       state.open =action.payload
     }
@@ -61,7 +64,7 @@ export const cartSlice = createSlice({
 
 })
 
-export const { addCart, setoggleCart , removeCart} = cartSlice.actions
+export const { addCart, setoggleCart , removeCart, deleteCart} = cartSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectProducts = (state: RootState) => state.products.products

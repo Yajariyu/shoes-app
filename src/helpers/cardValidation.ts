@@ -58,3 +58,10 @@ export const validationForm ={
     return validate ;
   },
 }
+
+export const errorsForm = {
+  name: 'Invalidate Name',
+  number:'Invalidate Card Number',
+  cvc: 'Invalidate CVC',
+  expiry: 'Invalidate Expiry'
+}
